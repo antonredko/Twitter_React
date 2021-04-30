@@ -1,38 +1,27 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PostsList from "./components/PostsList/PostsList";
+import { usePosts } from "./hooks/usePosts";
+import { useUsers } from "./hooks/useUsers";
+import { useComments } from "./hooks/useComments";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
 
-  const [posts, setPosts] = useState([])
-  const [users, setUsers] = useState([])
-  const [comments, setComments] = useState([])
-
-  useEffect(() => {
-    (async (url) => {
-      const data = await fetch(url).then(r => r.json())
-      setPosts(data)
-    })('http://jsonplaceholder.typicode.com/posts')
-  }, [])
-
-  useEffect(() => {
-    (async (url) => {
-      const data = await fetch(url).then(r => r.json())
-      setUsers(data)
-    })('http://jsonplaceholder.typicode.com/users')
-  }, [])
-
-  useEffect(() => {
-    (async (url) => {
-      const data = await fetch(url).then(r => r.json())
-      setComments(data)
-    })('http://jsonplaceholder.typicode.com/comments')
-  }, [])
+  const {posts} = usePosts([])
+  const {users} = useUsers([])
+  const {comments} = useComments([])
   
   return (
-    <div className='container'>
-      <PostsList posts={posts} users={users} comments={comments} />
-    </div>
+    <Router>
+      <div className='container'>
+        <Switch>
+          <Route path="/">
+            <PostsList posts={posts} users={users} comments={comments} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
