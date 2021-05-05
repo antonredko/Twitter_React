@@ -3,19 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import PostsProvider from './hooks/usePosts';
-import UsersProvider from './hooks/useUsers';
-import CommentsProvider from './hooks/useComments';
 
 ReactDOM.render(
   <React.StrictMode>
-    <PostsProvider>
-      <UsersProvider>
-        <CommentsProvider>
-          <App />
-        </CommentsProvider>
-      </UsersProvider>
-    </PostsProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
