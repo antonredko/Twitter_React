@@ -7,18 +7,3 @@
 .post{
   margin: 30px 0;
 }
-.post_title{
-  font-weight: 500;
-  margin-bottom: 5px;
-  text-align: center;
-}
-.post_author{
-  font-weight: 700;
-}
-.post_text{
-    text-align: justify;
-}
-.post_comments{
-  margin-top: 5px;
-  color: blue;
-}
