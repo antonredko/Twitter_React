@@ -7,3 +7,26 @@
 .post{
   margin: 30px 0;
 }
+.ant-card-actions > li {
+    display: flex;
+    justify-content: center;
+}
+ul.ant-card-actions > li > span{
+    display: flex;
+}
+.ant-card-actions > li > span > span.anticon{
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.ant-card-actions > li > span a:not(.ant-btn){
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.ant-card-actions .ant-space-item{
+    display: flex;
+    font-size: 18px;
+    line-height: 1;
+}
