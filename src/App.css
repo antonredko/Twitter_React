@@ -11,6 +11,9 @@
     display: flex;
     justify-content: center;
 }
+.ant-card-head-title h2{
+  margin: 0;
+}
 ul.ant-card-actions > li > span{
     display: flex;
 }
@@ -19,14 +22,21 @@ ul.ant-card-actions > li > span{
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 5px;
 }
 .ant-card-actions > li > span a:not(.ant-btn){
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
-.ant-card-actions .ant-space-item{
+.ant-space{
+  padding: 5px;
+}
+.ant-space-item{
     display: flex;
     font-size: 18px;
     line-height: 1;
+}
+.ant-space-item:last-child{
+  font-size: 16px;
 }

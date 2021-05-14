@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import PostsList from "./components/PostsList/PostsList";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import UserCard from "./components/UserCard/UserCard";
 
 function App() {
   
@@ -10,8 +10,11 @@ function App() {
     <Router>
       <div className='container'>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <PostsList />
+          </Route>
+          <Route path="/user/:userId">
+            <UserCard />
           </Route>
         </Switch>
       </div>
@@ -20,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+// https://github.com/typicode/json-server

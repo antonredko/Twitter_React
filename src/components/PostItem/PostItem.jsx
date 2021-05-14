@@ -1,10 +1,12 @@
 import { Card, Space } from 'antd';
 import { EditOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons';
 import React from 'react'
+import { useHistory } from 'react-router';
 
 const { Meta } = Card
 
-export default function PostItem({item, users, comments}) {
+export default function PostItem({item}) {
+  const history = useHistory()
 
   return (
 
@@ -17,6 +19,7 @@ export default function PostItem({item, users, comments}) {
             <CardIcon
                 icon={ <MessageOutlined /> }
                 text={ item.comments?.length }
+                onClick={ history.push() }
             />
         ]}
       >
@@ -31,12 +34,12 @@ export default function PostItem({item, users, comments}) {
 }
 
 function CardIcon({icon, text}) {
-    return (
-        <>
-            <Space>
-                {icon}
-                {text}
-            </Space>
-        </>
-    )
+  return (
+    <>
+      <Space>
+        {icon}
+        {text}
+      </Space>
+    </>
+  )
 }
