@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import getData from '../../api/getData'
+import React from 'react'
 import PostItem from '../PostItem/PostItem'
 
-export default function PostsList() {
-    const [posts, setPosts] = useState([])
-    useEffect(() => {
-        getData('http://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments', data => setPosts(data))
-    }, [])
+export default function PostsList({posts}) {
+    
     return (
         <ul>
             {posts.map(post => 

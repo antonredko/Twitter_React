@@ -1,17 +1,23 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PostsList from "./components/PostsList/PostsList";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserCard from "./components/UserCard/UserCard";
+import getData from "./api/getData"
 
 function App() {
-  
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+      getData('http://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments', data => setPosts(data))
+  }, [])
+
   return (
     <Router>
       <div className='container'>
         <Switch>
           <Route exact path="/">
-            <PostsList />
+            <PostsList posts={posts} />
           </Route>
           <Route path="/user/:userId">
             <UserCard />
@@ -23,5 +29,3 @@ function App() {
 }
 
 export default App;
-
-// https://github.com/typicode/json-server
