@@ -4,10 +4,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css';
 import './index.css';
+import PostsProvider from './hooks/usePosts';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PostsProvider>
+      <App />
+    </PostsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

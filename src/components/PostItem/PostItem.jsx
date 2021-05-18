@@ -1,18 +1,29 @@
 import { Card, Space, Typography } from 'antd';
 import { EditOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons';
 import React from 'react'
+import { usePosts } from '../../hooks/usePosts';
+import { useHistory } from 'react-router';
 
 const { Meta } = Card
 const { Link } = Typography
 
 export default function PostItem({item}) {
+  const history = useHistory()
+  const { postsAction } = usePosts()
 
   return (
 
     <li className="post">
       <Card
         title={
-          <Link href={`/user/${item.user.id}`} >
+          <Link
+            onClick={() => {
+              history.push(`/user/${item.user.id}`)
+              postsAction({type: 'user', payload: {
+                user: item.user
+              }})
+            }}
+          >
             {item.user?.name}
           </Link>
         }

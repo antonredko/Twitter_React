@@ -1,16 +1,12 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PostsList from "./components/PostsList/PostsList";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserCard from "./components/UserCard/UserCard";
-import getData from "./api/getData"
+import { usePosts } from "./hooks/usePosts";
 
 function App() {
-  const [posts, setPosts] = useState([])
-
-  useEffect(() => {
-      getData('http://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments', data => setPosts(data))
-  }, [])
+  const { posts } = usePosts();
 
   return (
     <Router>
