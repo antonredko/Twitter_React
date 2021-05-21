@@ -3,6 +3,7 @@ import { EditOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons';
 import React from 'react'
 import { usePosts } from '../../hooks/usePosts';
 import { useHistory } from 'react-router';
+// import { useUsers } from '../../hooks/useUsers';
 
 const { Meta } = Card
 const { Link } = Typography
@@ -10,6 +11,7 @@ const { Link } = Typography
 export default function PostItem({item}) {
   const history = useHistory()
   const { postsAction } = usePosts()
+  // const { usersAction } = useUsers()
 
   return (
 
@@ -20,7 +22,7 @@ export default function PostItem({item}) {
             onClick={() => {
               history.push(`/user/${item.user.id}`)
               postsAction({type: 'user', payload: {
-                user: item.user
+                id: item.userId
               }})
             }}
           >

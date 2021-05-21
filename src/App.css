@@ -40,3 +40,6 @@ ul.ant-card-actions > li > span{
 .ant-space-item:last-child{
   font-size: 16px;
 }
+.ant-input-group-wrapper:nth-child(n+2) {
+  margin-top: 20px;
+}

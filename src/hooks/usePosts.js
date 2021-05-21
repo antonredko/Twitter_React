@@ -16,7 +16,8 @@ export default function PostsProvider({ children }) {
                 return [...payload]
             }
             case "user": {
-                return payload
+                const post = state.find(user => user.id === +payload.id)
+                return post.user
             }
             default:
                 throw new Error('Received wrong action type from dispatch function!')
