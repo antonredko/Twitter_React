@@ -1,7 +1,7 @@
 import { Result, Button } from "antd";
 import { useHistory } from "react-router";
 
-export default function Undefined() {
+export default function NotFound() {
   const history = useHistory();
 
   return (
