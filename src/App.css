@@ -40,6 +40,37 @@ ul.ant-card-actions > li > span{
 .ant-space-item:last-child{
   font-size: 16px;
 }
-.ant-input-group-wrapper:nth-child(n+2) {
-  margin-top: 20px;
+.user_description{
+    margin-bottom: 20px;
+}
+.user_posts{
+    padding-bottom: 50px;
+}
+.ant-input-group-wrapper:nth-child(n + 2) {
+  margin-top: 10px;
+}
+.ant-input-group-addon:first-child{
+    width: 30%;
+    text-align: left;
+}
+.user_title{
+    font-size: 24px;
+    font-weight: 900;
+    padding: 20px 0;
+    text-align: center;
+}
+.user_posts_title{
+    font-size: 18px;
+    padding: 20px 0 10px;
+    font-weight: 700;
+}
+.user_posts_item:nth-child(n + 2){
+    margin-top: 20px;
+}
+.user_description_item>div{
+    padding-left: 20px;
+}
+.user_description_item_title{
+    padding: 10px 0;
+    font-weight: 600;
 }

@@ -1,27 +1,30 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react'
-import getData from "../api/getData"
+import React, { createContext, useContext, useReducer, useEffect } from "react";
+import getData from "../api/getData";
 
-const PostsContext = createContext()
-export const usePosts = () => useContext(PostsContext)
+const PostsContext = createContext();
+export const usePosts = () => useContext(PostsContext);
 export default function PostsProvider({ children }) {
-    const [posts, postsAction] = useReducer(postsReducer, [])
+  const [posts, postsAction] = useReducer(postsReducer, []);
 
-    useEffect(() => {
-        getData('http://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments', data => postsAction({type: 'set', payload: data}))
-    }, [])
+  useEffect(() => {
+    getData(
+      "http://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments",
+      (data) => postsAction({ type: "set", payload: data })
+    );
+  }, []);
 
-    function postsReducer(state, {type, payload}) {
-        switch (type) {
-            case "set": {
-                return [...payload]
-            }
-            case "user": {
-                const post = state.find(user => user.id === +payload.id)
-                return post.user
-            }
-            default:
-                throw new Error('Received wrong action type from dispatch function!')
-        }
+  function postsReducer(state, { type, payload }) {
+    switch (type) {
+      case "set": {
+        return [...payload];
+      }
+      default:
+        throw new Error("Received wrong action type from dispatch function!");
     }
-    return <PostsContext.Provider value={{posts, postsAction}}>{children}</PostsContext.Provider>
+  }
+  return (
+    <PostsContext.Provider value={{ posts, postsAction }}>
+      {children}
+    </PostsContext.Provider>
+  );
 }
