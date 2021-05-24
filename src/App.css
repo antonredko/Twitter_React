@@ -112,3 +112,13 @@ div.ant-card-head-title {
 a.ant-typography {
   align-items: center;
 }
+.post_comments > h5.ant-typography {
+  margin: 0;
+}
+.post_card{
+  margin-bottom: 30px;
+}
+.container h1.ant-typography {
+  font-size: 26px;
+  text-align: center;
+}

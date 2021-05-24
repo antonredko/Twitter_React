@@ -40,7 +40,7 @@ export default function UserCard() {
 
   return (
     <>
-      <Title level={3} className="user_title">
+      <Title className="user_title">
         UserCard
       </Title>
       <div className="user_description">
