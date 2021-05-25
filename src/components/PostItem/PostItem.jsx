@@ -14,6 +14,11 @@ const { Link, Paragraph, Title } = Typography;
 export default function PostItem({ item }) {
   const history = useHistory();
   const [text, setText] = useState(item.body);
+  const [editing, setEditing] = useState(false)
+
+  function aaa() {
+    setText(text)
+  }
 
   return (
     <Card
@@ -29,7 +34,7 @@ export default function PostItem({ item }) {
       }
       actions={[
         <LikeOutlined />,
-        <EditOutlined key="edit" />,
+        <EditOutlined onClick={() => setEditing(!editing)} />,
         <Link onClick={() => history.push(`/post/${item.id}`)}>
           <CardIcon icon={<MessageOutlined />} text={item.comments?.length} />
         </Link>,
@@ -37,12 +42,16 @@ export default function PostItem({ item }) {
       hoverable={true}
     >
       <Meta
-        title={<Title level={5}>{item.title}</Title>}
+        // title={<Title level={5}>{item.title}</Title>}
         description={
           <Paragraph
             editable={{
+              icon: <></>,
               tooltip: "Edit the text",
               onChange: setText,
+              autoSize: true,
+              editing: editing,
+              onCancel: aaa()
             }}
           >
             {text}

@@ -94,7 +94,7 @@ div.ant-typography.ant-typography-edit-content {
   left: auto;
   margin-top: auto;
 }
-h5.ant-typography {
+.ant-card-meta-title > h5.ant-typography {
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -115,10 +115,17 @@ a.ant-typography {
 .post_comments > h5.ant-typography {
   margin: 0;
 }
-.post_card{
+.post_card {
   margin-bottom: 30px;
 }
 .container h1.ant-typography {
   font-size: 26px;
   text-align: center;
+}
+li.ant-list-item {
+  display: block;
+}
+.ant-card-meta-description > div.ant-typography {
+  text-align: justify;
+  margin: 0;
 }
