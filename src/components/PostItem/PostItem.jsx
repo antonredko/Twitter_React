@@ -1,11 +1,6 @@
 import { Avatar, Card, Space, Typography } from "antd";
-import {
-  AntDesignOutlined,
-  EditOutlined,
-  LikeOutlined,
-  MessageOutlined,
-} from "@ant-design/icons";
-import React, { useState } from "react";
+import { AntDesignOutlined, EditOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 const { Meta } = Card;
@@ -16,9 +11,11 @@ export default function PostItem({ item }) {
   const [text, setText] = useState(item.body);
   const [editing, setEditing] = useState(false)
 
-  function aaa() {
-    setText(text)
-  }
+  useEffect(() => {
+    if (item.body) {
+      setText(item.body)
+    }
+  }, [item])
 
   return (
     <Card
@@ -47,11 +44,9 @@ export default function PostItem({ item }) {
           <Paragraph
             editable={{
               icon: <></>,
-              tooltip: "Edit the text",
               onChange: setText,
               autoSize: true,
-              editing: editing,
-              onCancel: aaa()
+              editing: editing
             }}
           >
             {text}

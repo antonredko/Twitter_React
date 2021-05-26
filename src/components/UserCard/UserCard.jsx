@@ -3,46 +3,46 @@ import { Card, Input, List, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
-import getData from "../../api/getData";
-// import { usePosts } from "../../hooks/usePosts";
+// import getData from "../../api/getData";
+import { usePosts } from "../../hooks/usePosts";
 import { CardIcon } from "../PostItem/PostItem";
 
 const { Title } = Typography;
 
 export default function UserCard() {
-  // const { posts } = usePosts()
+  const { posts } = usePosts()
   const { userId } = useParams();
   const [user, setUser] = useState({});
   const [userPosts, setUserPosts] = useState([]);
   const history = useHistory();
-
+  
   useEffect(() => {
-    // if(userId) {
-    //   const postItem = posts.find(post => post.user?.id === +userId)
-    //   const postsOfUser = posts.filter(post => post.userId === +userId)
-    //   if(postItem) {
-    //     setUser(postItem.user)
-    //     setUserPosts(postsOfUser)
-    //   } else {
-    //     history.push('/404')
-    //   }
+    if (userId) {
+        const postItem = posts.find(post => post.user?.id === +userId)
+        const postsOfUser = posts.filter(post => post.userId === +userId)
 
-    userId &&
-      getData(`http://jsonplaceholder.typicode.com/users/${userId}`, (data) =>
-        setUser(data)
-      );
-    userId &&
-      getData(
-        `http://jsonplaceholder.typicode.com/posts?userId=${userId}&_embed=comments`,
-        (data) => setUserPosts(data)
-      );
-  }, [userId]);
+      if (postItem) {
+        setUser(postItem.user)
+        setUserPosts(postsOfUser)
+      } else if (!postItem && posts.length) {
+        history.push('/404')
+      }
+
+      // userId && getData(`http://jsonplaceholder.typicode.com/users/${userId}`, (data) =>
+      //   setUser(data)
+      // );
+
+      // userId && getData(
+      //   `http://jsonplaceholder.typicode.com/posts?userId=${userId}&_embed=comments`,
+      //   (data) => setUserPosts(data)
+      // );
+
+    }
+  }, [userId, posts]);
 
   return (
     <>
-      <Title className="user_title">
-        UserCard
-      </Title>
+      <Title className="user_title">UserCard</Title>
       <div className="user_description">
         {user.name && <Input addonBefore="Name" value={user.name} readOnly />}
         {user.username && (

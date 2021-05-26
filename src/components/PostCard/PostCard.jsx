@@ -19,12 +19,12 @@ export default function PostCard() {
 
       if (postItem) {
         setPost(postItem);
-      } else {
+      } else if (!postItem && posts.length > 0) {
         history.push('/404')
       }
 
     }
-  }, [postId]);
+  }, [postId, posts]);
 
   return (
     <>
